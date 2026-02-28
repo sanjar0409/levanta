@@ -398,7 +398,53 @@
               need to grow. Start small or dive deep — you decide.
             </p>
           </header>
-          <div class="tiers" id="tiers-container"></div>
+          <div class="tiers-slider-wrapper">
+            <button
+              type="button"
+              class="tiers-slider__btn tiers-slider__btn--prev"
+              aria-label="Previous tier"
+              aria-hidden="true"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 18l-6-6 6-6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="tiers" id="tiers-container"></div>
+            <button
+              type="button"
+              class="tiers-slider__btn tiers-slider__btn--next"
+              aria-label="Next tier"
+              aria-hidden="true"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 18l6-6-6-6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
 

@@ -119,8 +119,50 @@
     })
   }
 
+  function initTiersSlider() {
+    var wrapper = document.querySelector('.tiers-slider-wrapper')
+    var container = document.getElementById('tiers-container')
+    var prevBtn = wrapper && wrapper.querySelector('.tiers-slider__btn--prev')
+    var nextBtn = wrapper && wrapper.querySelector('.tiers-slider__btn--next')
+    if (!wrapper || !container || !prevBtn || !nextBtn) return
+
+    var SLIDER_BREAKPOINT = 1694
+    var mql = window.matchMedia('(max-width: ' + SLIDER_BREAKPOINT + 'px)')
+
+    function updateButtonsVisibility() {
+      var isSlider = mql.matches
+      prevBtn.setAttribute('aria-hidden', !isSlider)
+      nextBtn.setAttribute('aria-hidden', !isSlider)
+    }
+
+    function scrollTiers(direction) {
+      if (!mql.matches) return
+      var cards = container.querySelectorAll('.tier-card')
+      if (!cards.length) return
+      var firstCard = cards[0]
+      var cardWidth = firstCard.offsetWidth
+      var gap = 26
+      var scrollAmount = cardWidth + gap
+      container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth',
+      })
+    }
+
+    prevBtn.addEventListener('click', function () {
+      scrollTiers(-1)
+    })
+    nextBtn.addEventListener('click', function () {
+      scrollTiers(1)
+    })
+
+    mql.addEventListener('change', updateButtonsVisibility)
+    updateButtonsVisibility()
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initTiers()
+    initTiersSlider()
     initHeaderScroll()
     initScrollAnimations()
   })
