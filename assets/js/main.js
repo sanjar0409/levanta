@@ -55,6 +55,7 @@
     var features = FEATURES.map(function (f, i) {
       return renderFeature(f, i < tier.active)
     }).join('')
+    var levelNum = tier.level.replace(/\D/g, '') || ''
     var cardClass =
       'tier-card animate-on-scroll' +
       (tier.featured ? ' tier-card--featured' : '')
@@ -63,6 +64,10 @@
       cardClass +
       '">' +
       '<div class="tier-card__glow" aria-hidden="true"></div>' +
+      '<div class="tier-card__badge" aria-hidden="true">' +
+      levelNum +
+      '</div>' +
+      '<div class="tier-card__body">' +
       '<div class="tier-card__header">' +
       '<h3 class="tier-card__name">' +
       tier.name +
@@ -73,7 +78,8 @@
       '<ul class="tier-features" role="list">' +
       features +
       '</ul>' +
-      '<p class="tier-card__coming">Coming soon...</p></article>'
+      '<p class="tier-card__coming">Coming soon...</p>' +
+      '</div></article>'
     )
   }
 
